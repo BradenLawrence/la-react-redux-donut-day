@@ -10,15 +10,6 @@ class NewDonutOrderFormContainer extends Component {
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
-  // Below function will utilize the donutOrderList from your store and
-  // calculates id of next item in place of a database
-  calculateNewId() {
-    if (this.props.donutOrderList.length === 0) {
-      return 1
-    } else {
-      const donutIds = this.props.donutOrderList.map(donut => donut.id)
-      return Math.max(...donutIds) + 1
-    }
   }
 
   handleFormSubmit(event) {
