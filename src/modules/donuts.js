@@ -4,7 +4,10 @@
 
 // Action creators go here
 
-
+const getNextId = (array) => {
+  const ids = array.map(obj => obj.id)
+  return Math.max(...ids) + 1
+}
 
 // Reducer and its initialState go here
 
