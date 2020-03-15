@@ -24,6 +24,12 @@ class NewDonutOrderFormContainer extends Component {
 
   handleFormSubmit(event) {
     event.preventDefault()
+    this.props.addDonutOrder({
+      name: this.state.newName,
+      flavor: this.state.newFlavor
+    })
+    this.clearForm()
+  }
 
   handleFieldChange(event) {
     const key = event.currentTarget.name
