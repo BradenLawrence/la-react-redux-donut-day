@@ -39,6 +39,18 @@ const initialState = {
 
 const donuts = (state = initialState, action) => {
   switch(action.type) {
+    case ADD_ORDER:
+      const updatedDonutOrder = [
+        ...state.donutOrderList,
+        {
+          id: getNextId(state.donutOrderList),
+          ...action.order
+        }
+      ]
+      return {
+        ...state,
+        donutOrderList: updatedDonutOrder
+      }
     default:
       return state
   }
@@ -47,5 +59,6 @@ const donuts = (state = initialState, action) => {
 // Export statement goes here
 
 export {
+  addDonutOrder,
   donuts
 };
