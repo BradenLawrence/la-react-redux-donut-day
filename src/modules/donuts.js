@@ -1,8 +1,14 @@
 // Action type constants go here
-
+const ADD_ORDER = 'ADD_ORDER'
 
 
 // Action creators go here
+const addDonutOrder = (order) => {
+  return {
+    type: ADD_ORDER,
+    order
+  }
+}
 
 const getNextId = (array) => {
   const ids = array.map(obj => obj.id)
