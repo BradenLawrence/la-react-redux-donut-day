@@ -6,9 +6,13 @@ import InputField from '../components/InputField'
 class NewDonutOrderFormContainer extends Component {
   constructor(props) {
     super(props);
-
+    this.state = {
+      newName: '',
+      newFlavor: ''
+    }
     this.clearForm = this.clearForm.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
+    this.handleFieldChange = this.handleFieldChange.bind(this)
   }
 
   clearForm() {
@@ -21,9 +25,10 @@ class NewDonutOrderFormContainer extends Component {
   handleFormSubmit(event) {
     event.preventDefault()
 
-    // Your code here
-    // First, prepare a new donut order object
-    // Then, add that object to the store, and clear the form
+  handleFieldChange(event) {
+    const key = event.currentTarget.name
+    const value = event.currentTarget.value
+    this.setState({ [key]: value })
   }
 
   render() {
@@ -36,13 +41,16 @@ class NewDonutOrderFormContainer extends Component {
             label='Your Name'
             type='text'
             name='newName'
+            value={this.state.newName}
+            handleChange={this.handleFieldChange}
           />
           <InputField
             key='newFlavor'
             label='Flavor'
             type='text'
             name='newFlavor'
-            handleChange={this.props.handleFieldChange}
+            value={this.state.newFlavor}
+            handleChange={this.handleFieldChange}
           />
           <input type='submit' />
         </form>
