@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { addDonutOrder } from '../modules/donuts'
 
 import DonutOrdersList from '../components/DonutOrdersList'
 import NewDonutOrderFormContainer from './NewDonutOrderFormContainer'
@@ -15,7 +16,9 @@ class DonutOrdersIndexContainer extends Component {
         <DonutOrdersList
           donutOrderList={this.props.donutOrderList}
         />
-        <NewDonutOrderFormContainer />
+        <NewDonutOrderFormContainer
+          addDonutOrder={this.props.addDonutOrder}
+        />
       </div>
     )
   }
@@ -26,4 +29,12 @@ const mapStateToProps = (state) => {
     donutOrderList: state.donuts.donutOrderList
   }
 }
-export default connect(mapStateToProps, null)(DonutOrdersIndexContainer)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addDonutOrder: (order) => dispatch(addDonutOrder(order))
+  }
+}
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DonutOrdersIndexContainer)
