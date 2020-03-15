@@ -7,9 +7,15 @@ class NewDonutOrderFormContainer extends Component {
   constructor(props) {
     super(props);
 
+    this.clearForm = this.clearForm.bind(this)
     this.handleFormSubmit = this.handleFormSubmit.bind(this)
   }
 
+  clearForm() {
+    this.setState({
+      newName: '',
+      newFlavor: ''
+    })
   }
 
   handleFormSubmit(event) {
